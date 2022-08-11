@@ -19,12 +19,17 @@ import openfl.text.TextFormat;
 class MenuState extends FlxState
 {
 	var titleText:FlxText;
-	var bd:FlxBackdrop;
-	var buttonG:FlxSliceSprite;
-	var playButton:FlxUIButton;
-	var arr:Array<String>;
-	var ttlObj:Array<Dynamic>;
 	var datxt:FlxText;
+
+	var bd:FlxBackdrop;
+
+	var buttonG:FlxSliceSprite;
+
+	var playButton:FlxUIButton;
+
+	var arr:Array<String>;
+	
+	var ttlObj:Array<Dynamic>;
 
 	override public function create()
 	{
@@ -33,11 +38,11 @@ class MenuState extends FlxState
 		bd = new FlxBackdrop('assets/images/playstate/bdrop.png', 1, 1);
 		bd.velocity.set(40, 40);
 		FlxG.camera.bgColor = FlxColor.fromString("#d2cbf2");
-		titleText = new FlxText(198, 90, 0, "Sushi Cats!", 48, true);
+		titleText = new FlxText(154, 90, 0, "Sushi Cats 2!", 48, true);
 		titleText.font = 'assets/data/fonts/lowbatt.ttf';
 		playButton = new FlxUIButton(256, 260, "Play!", onClick);
 
-		datxt = new FlxText(148, 320, 0, "Made with love to the Haxe Community, \n by Renchu (@BSOD).", 14);
+		datxt = new FlxText(148, 320, 0, "Made with love to the Haxe Community\noriginal by Renchu (@BSOD).\nsequel by Portilizen", 14);
 		datxt.alignment = CENTER;
 		datxt.color = FlxColor.fromString("383259");
 		datxt.autoSize = false;
@@ -57,7 +62,7 @@ class MenuState extends FlxState
 				onComplete: (_) ->
 				{
 					FlxG.camera.bgColor = FlxColor.BLACK;
-					FlxG.switchState(new PlayState());
+					FlxG.switchState(new Dialogue());
 				}
 			});
 		}

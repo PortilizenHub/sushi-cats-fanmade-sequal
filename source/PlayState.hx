@@ -16,21 +16,32 @@ import haxe.CallStack;
 
 class PlayState extends FlxState
 {
-	var counter:Float = 0.08;
 	var kitties:Cat;
-	var blanket:FlxSprite;
-	var curKit:String;
+
+
 	var timer:FlxTimer;
-	var bg:FlxSprite;
+
+	var curKit:String;
 	var curBlanket:String;
 	var curRoll:String;
+
 	var tutorial:FlxTypeText;
-	var tutFinish:Bool = false;
+	
+	var blanket:FlxSprite;
+	var bg:FlxSprite;
 	var rollPoint:FlxSprite;
+
+	var counter:Float = 0.08;
 	var points:Float = 0;
+
 	var pText:FlxText;
+
+	var tutFinish:Bool = false;
 	var flag:Bool = true;
+
 	var catcom:Array<FlxSprite>;
+
+	public static var paused:Bool = false;
 
 	public static var roll:FlxSprite;
 
@@ -42,22 +53,12 @@ class PlayState extends FlxState
 
 		rollPoint = new FlxSprite(480, 380);
 		rollPoint.makeGraphic(16, 16, FlxColor.TRANSPARENT);
-		FlxG.camera.color = FlxColor.BLACK;
-		FlxG.camera.fade(FlxColor.TRANSPARENT, true);
 		super.create();
 		bg = new FlxSprite(0, 0, 'assets/images/playstate/stage preview.png');
 
 		add(bg);
 		add(rollPoint);
 		add(pText);
-		#if (FLX_DEBUG && show_devtools == "yes")
-		FlxG.watch.addMouse();
-		FlxG.watch.add(pText, "x");
-		FlxG.watch.add(pText, "y"); // pText.angle = -8;
-		FlxG.watch.add(pText, "angle");
-		var angButton = new FlxButton(0, 0, "1more", onClick);
-		add(angButton);
-		#end
 		spawnCats();
 	}
 
@@ -173,11 +174,20 @@ class PlayState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.anyJustPressed([ENTER]))
+		/*
+		if (FlxG.keys.anyJustPressed([ENTER]) && paused == false)
 		{
 			var dialogue = new Dialogue(FlxColor.BLACK, "hey :)");
 			openSubState(dialogue);
 		}
+
+		if (FlxG.keys.justPressed.ENTER)
+		{
+			paused = true;
+			openSubState(new PauseMenuSubState());
+		}
+		*/
+
 		pText.text = '$points';
 		rollLogic(elapsed);
 		doARoll();

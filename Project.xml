@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://lime.software/project/1.0.2 http://lime.software/xsd/project-1.0.2.xsd">
 
 	<!-- _________________________ Application Settings _________________________ -->
-	<app title="haxejammm" file="haxejammm" main="Main" version="0.0.1" company="HaxeFlixel" />
+	<app title="sushi cats 2" file="sushi" main="Main" version="0.1.0" company="Portilizen" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -18,7 +18,7 @@
 	<window width="640" height="480" fps="60" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
-	<window if="html5" resizable="false" />
+	<window if="html5" resizable="true" />
 
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />

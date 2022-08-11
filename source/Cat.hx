@@ -5,11 +5,13 @@ import flixel.FlxSprite;
 
 class Cat extends FlxSprite
 {
-	public var type:String;
 
 	var idleFr:Array<Int>;
-	var counter:Float = 0.06;
 	var finFr:Array<Int>;
+
+	var counter:Float = 0.06;
+	
+	public var type:String;
 
 	public var catAngle:Float;
 
@@ -54,7 +56,7 @@ class Cat extends FlxSprite
 		var rRight = FlxG.keys.anyPressed([RIGHT, D]);
 		var rLeft = FlxG.keys.anyPressed([LEFT, A]);
 
-		if (rRight)
+		if (rRight && PlayState.paused == false)
 		{
 			if (this.type == 'luna')
 			{
@@ -67,7 +69,7 @@ class Cat extends FlxSprite
 				this.angularVelocity = 30;
 			}
 		}
-		else if (rLeft)
+		else if (rLeft && PlayState.paused == false)
 		{
 			this.velocity.x = -100;
 			this.angularVelocity = -30;
