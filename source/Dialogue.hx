@@ -11,7 +11,7 @@ class Dialogue extends FlxState
 {
 	var bg:FlxSprite;
 	var diaBox:FlxSprite;
-	
+
 	var dialogue:FlxText;
 	var dialogueBOT:FlxText;
 
@@ -75,7 +75,9 @@ class Dialogue extends FlxState
 			case 3:
 				dialogue.text = "Their cats aren't sleep yet!";
 			case 4:
-				dialogue.text = 'I better get them ready for bed!';
+				dialogue.text = 'I hope see takes awhile';
+			case 5:
+				dialogue.text = 'Cause getting these cats asleep is gonna\ntake awhile!';
 			default:
 				dialogue.text = '';
 		}
@@ -83,6 +85,8 @@ class Dialogue extends FlxState
 		// background
 		switch (curLine)
 		{
+			case 1, 2:
+				bg.loadGraphic('assets/images/playstate/story/text.png', false, 640, 480);
 			default:
 				bg.loadGraphic('assets/images/playstate/story/messyCats.png', false, 640, 480);
 		}
@@ -90,7 +94,7 @@ class Dialogue extends FlxState
 		// events
 		switch (curLine)
 		{
-			case 5:
+			case 6:
 				FlxG.switchState(new PlayState());
 			default:
 				// i ment to say events but i thought this was funny

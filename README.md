@@ -16,10 +16,9 @@ Your goal now is to roll up these cats in fluffy blankets, right before Mrs. Oce
 
 ## Controls:
 
-Left arrow key: unroll the cat out of the blanket.
-Right arrow key: roll the cat up in a blanket.
-
-P: Pause. [TODO]
+Left arrow or A key: unroll the cat out of the blanket.
+Right arrow or D key: roll the cat up in a blanket.
+Enter: Select an option in the pause menu or proceed in dialogue
 
 M: Toggle music. [TODO]
 

@@ -58,21 +58,13 @@ class Cat extends FlxSprite
 
 		if (rRight && PlayState.paused == false)
 		{
-			if (this.type == 'luna')
-			{
-				this.velocity.x = 150;
-				this.angularVelocity = 40;
-			}
-			else
-			{
-				this.velocity.x = 130;
-				this.angularVelocity = 30;
-			}
+			this.velocity.x = 100;
+			this.angularVelocity = 40;
 		}
 		else if (rLeft && PlayState.paused == false)
 		{
 			this.velocity.x = -100;
-			this.angularVelocity = -30;
+			this.angularVelocity = -40;
 		}
 		else
 			this.angularVelocity = 0;

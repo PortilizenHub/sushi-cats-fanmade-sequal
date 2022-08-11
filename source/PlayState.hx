@@ -18,7 +18,6 @@ class PlayState extends FlxState
 {
 	var kitties:Cat;
 
-
 	var timer:FlxTimer;
 
 	var curKit:String;
@@ -26,13 +25,12 @@ class PlayState extends FlxState
 	var curRoll:String;
 
 	var tutorial:FlxTypeText;
-	
+
 	var blanket:FlxSprite;
 	var bg:FlxSprite;
 	var rollPoint:FlxSprite;
 
 	var counter:Float = 0.08;
-	var points:Float = 0;
 
 	var pText:FlxText;
 
@@ -42,19 +40,28 @@ class PlayState extends FlxState
 	var catcom:Array<FlxSprite>;
 
 	public static var paused:Bool = false;
+	public static var canPause:Bool = true;
+	public static var points:Int = 0;
 
 	public static var roll:FlxSprite;
 
 	override public function create()
 	{
-		pText = new FlxText(106, 322, 0, "", 16, true);
+		pText = new FlxText(476, 330, 0, "", 16, true);
 		pText.font = 'assets/data/fonts/statusplz-regular.ttf';
 		pText.antialiasing = false;
 
 		rollPoint = new FlxSprite(480, 380);
 		rollPoint.makeGraphic(16, 16, FlxColor.TRANSPARENT);
 		super.create();
-		bg = new FlxSprite(0, 0, 'assets/images/playstate/stage preview.png');
+		bg = new FlxSprite(0, 0, 'assets/images/playstate/new stage.png');
+		
+		#if html5
+		FlxG.sound.playMusic('assets/music/Bg.mp3', 1, true);
+		#end
+		#if !html5
+		FlxG.sound.playMusic('assets/music/Bg.ogg', 1, true);
+		#end
 
 		add(bg);
 		add(rollPoint);
@@ -112,14 +119,9 @@ class PlayState extends FlxState
 		blanket = new FlxSprite(90, 398);
 		blanket.loadGraphic(curBlanket);
 
-		catcom = [roll, kitties];
-
 		add(blanket);
-		for (i in catcom)
-		{
-			add(i);
-			FlxTween.tween(i, {y: i.y + 20}, 0.8, {ease: FlxEase.bounceOut});
-		}
+		add(roll);
+		add(kitties);
 	}
 
 	function rollLogic(elapsed:Float)
@@ -153,12 +155,13 @@ class PlayState extends FlxState
 
 	function doARoll()
 	{
-		if (kitties.overlaps(rollPoint) && flag)
+		if (kitties.overlaps(rollPoint) && flag && canPause)
 		{
+			canPause = false;
 			flag = false;
-			points = points + 25;
+			points += 25;
 			kitties.rolled = true;
-			FlxTween.tween(kitties, {angle: kitties.angle + 20, y: 500}, 0.7, {
+			FlxTween.tween(kitties, {angle: kitties.angle + 20, y: 800}, 0.7, {
 				ease: FlxEase.bounceOut,
 				onComplete: function(_):Void
 				{
@@ -166,6 +169,7 @@ class PlayState extends FlxState
 					blanket.kill();
 					roll.kill();
 					spawnCats();
+					canPause = true;
 					flag = true;
 				}
 			});
@@ -180,13 +184,14 @@ class PlayState extends FlxState
 			var dialogue = new Dialogue(FlxColor.BLACK, "hey :)");
 			openSubState(dialogue);
 		}
+		*/
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER && canPause == true)
 		{
 			paused = true;
+			FlxG.sound.pause();
 			openSubState(new PauseMenuSubState());
 		}
-		*/
 
 		pText.text = '$points';
 		rollLogic(elapsed);

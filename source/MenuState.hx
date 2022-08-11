@@ -28,12 +28,15 @@ class MenuState extends FlxState
 	var playButton:FlxUIButton;
 
 	var arr:Array<String>;
-	
+
 	var ttlObj:Array<Dynamic>;
 
 	override public function create()
 	{
 		super.create();
+		if (FlxG.camera.color == FlxColor.BLACK)
+			FlxG.camera.fade(FlxColor.TRANSPARENT, true);
+
 		// buttonG = new FlxSliceSprite('assets/images/ui/button.png', FlxRect.get(16, 16, 128 - 32, 128 - 32), 48, 128);
 		bd = new FlxBackdrop('assets/images/playstate/bdrop.png', 1, 1);
 		bd.velocity.set(40, 40);
@@ -51,6 +54,7 @@ class MenuState extends FlxState
 
 		for (o in ttlObj)
 			add(o);
+
 	}
 
 	function onClick()
