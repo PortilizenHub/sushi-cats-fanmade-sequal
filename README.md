@@ -29,6 +29,6 @@ M: Toggle music. [TODO]
 
 Requirements: Haxe 4, Lime haxelib, Flixel haxelib, OpenFL haxelib, Flixel-addons haxelib.
 
-Download the source code (either in a .zip file or fork this repository), place it in the desired directory, and run `lime test html5` in that folder containing the whole source code.
+Download the source code (either in a .zip file or fork this repository), place it in the desired directory, and run `lime test html5` or `lime test hl` in that folder containing the whole source code.
 
-*If you wanna skip that process, though, the game is also up on [Itch.io](https://renchuaintreal.itch.io/sushi-cats).*
+*If you wanna skip that process, though, the game is also up on [Itch.io](https://portilizengame.itch.io/sushi-cats-fanmade-sequel).*
