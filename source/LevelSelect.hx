@@ -1,33 +1,38 @@
 package;
 
-import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.addons.display.FlxBackdrop;
 
-class PauseMenuSubState extends FlxSubState
+class LevelSelect extends FlxSubState
 {
-	var textItems:Array<String> = ['Resume', 'Exit to menu', 'Exit to Level Select'];
+	var textItems:Array<String> = ['Level 1', 'Exit to menu'];
 
 	var curSelected:Int = 0;
 
 	var grpTexts:FlxTypedGroup<FlxText>;
 
-	// pov: you realize that you made a variable you dont need
-	public static var PauseLevel:FlxState;
+	public static var level:Int = 0;
 
 	public function new()
 	{
 		super();
 
-		trace('paused');
+		if (FlxG.camera.color == FlxColor.BLACK)
+			FlxG.camera.fade(FlxColor.TRANSPARENT, true);
 
-		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.alpha = 0.6;
-		add(bg);
+		var bd:FlxBackdrop = new FlxBackdrop('assets/images/playstate/bdrop.png', 1, 1);
+		bd.velocity.set(40, 40);
+		FlxG.camera.bgColor = FlxColor.fromString("#d2cbf2");
+		add(bd);
+
+		var titleText:FlxText = new FlxText(154, 20, 0, "Level Select!", 48, true);
+		titleText.font = 'assets/data/fonts/lowbatt.ttf';
+		add(titleText);
 
 		grpTexts = new FlxTypedGroup<FlxText>();
 		add(grpTexts);
@@ -68,26 +73,19 @@ class PauseMenuSubState extends FlxSubState
 		{
 			switch (textItems[curSelected])
 			{
-				case 'Resume':
-					FlxG.sound.resume();
-					PlayState.paused = false;
-					trace('unpaused');
+				case 'Level 1':
+					level = 1;
+					FlxG.camera.fade(FlxColor.BLACK, 1);
 					FlxG.state.closeSubState();
+					FlxG.camera.color = FlxColor.BLACK;
+					FlxG.switchState(new Dialogue());
 
 				case 'Exit to menu':
 					FlxG.camera.fade(FlxColor.BLACK, 1);
-					trace('unpaused but we go to da menu');
+					trace('go to da menu');
 					FlxG.state.closeSubState();
 					FlxG.camera.color = FlxColor.BLACK;
 					FlxG.switchState(new MenuState());
-					PlayState.paused = false;
-
-				case 'Exit to Level Select':
-					FlxG.camera.fade(FlxColor.BLACK, 1);
-					trace('unpaused but we go to da levels');
-					FlxG.state.closeSubState();
-					FlxG.camera.color = FlxColor.BLACK;
-					FlxG.switchState(new LevelSelect());
 					PlayState.paused = false;
 			}
 		}

@@ -43,7 +43,7 @@ class Dialogue extends FlxState
 		dialogue.color = 0x4E4E4E;
 		add(dialogue);
 
-		createStory();
+		makeNewStory();
 
 		super.create();
 	}
@@ -54,53 +54,36 @@ class Dialogue extends FlxState
 		{
 			curLineSEC++;
 			curLine++;
-			createStory();
+			makeNewStory();
 		}
 
 		super.update(elapsed);
 	}
 
-	function createStory()
+	function createStory(dia:String, background:String)
 	{
-		trace(curLine);
-		trace(text[curLineSEC]);
+		dialogue.text = dia;
+		bg.loadGraphic(background, false, 640, 480);
+	}
 
-		// text
-		switch (curLine)
+	function makeNewStory()
+	{
+		if (LevelSelect.level == 1)
 		{
-			case 1:
-				dialogue.text = 'Oh boy...';
-			case 2:
-				dialogue.text = 'Mrs. Sea is coming back soon!';
-			case 3:
-				dialogue.text = "Their cats aren't sleep yet!";
-			case 4:
-				dialogue.text = 'I hope see takes awhile';
-			case 5:
-				dialogue.text = 'Cause getting these cats asleep is gonna\ntake awhile!';
-			default:
-				dialogue.text = '';
+			switch (curLine)
+			{
+				case 1:
+					createStory('Oh boy...', 'assets/images/playstate/story/text.png');
+				case 2:
+					createStory('Mrs.Sea is coming back!', 'assets/images/playstate/story/text.png');
+				case 3:
+					createStory("And the cats aren't sleep!", 'assets/images/playstate/story/text.png');
+				case 4:
+					createStory('I hope she is fine with certain cats being\nsleep, cause she has way to many for me \nto even make go to bed!', 'assets/images/playstate/story/messyCats.png');
+				case 5:
+					FlxG.switchState(new LevelOne());
+			}
 		}
 
-		// background
-		switch (curLine)
-		{
-			case 1, 2:
-				bg.loadGraphic('assets/images/playstate/story/text.png', false, 640, 480);
-			default:
-				bg.loadGraphic('assets/images/playstate/story/messyCats.png', false, 640, 480);
-		}
-
-		// events
-		switch (curLine)
-		{
-			case 6:
-				FlxG.switchState(new PlayState());
-			default:
-				// i ment to say events but i thought this was funny
-				trace('no ebemts for this line');
-		}
-
-		dialogueBOT.text = dialogue.text;
 	}
 }

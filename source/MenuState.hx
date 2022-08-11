@@ -43,7 +43,7 @@ class MenuState extends FlxState
 		FlxG.camera.bgColor = FlxColor.fromString("#d2cbf2");
 		titleText = new FlxText(154, 90, 0, "Sushi Cats 2!", 48, true);
 		titleText.font = 'assets/data/fonts/lowbatt.ttf';
-		playButton = new FlxUIButton(256, 260, "Play!", onClick);
+		playButton = new FlxUIButton(256, 260, "Play!", onPlayClick);
 
 		datxt = new FlxText(148, 320, 0, "Made with love to the Haxe Community\noriginal by Renchu (@BSOD).\nsequel by Portilizen", 14);
 		datxt.alignment = CENTER;
@@ -57,7 +57,7 @@ class MenuState extends FlxState
 
 	}
 
-	function onClick()
+	function onPlayClick()
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 1);
 		for (o in ttlObj)
@@ -66,7 +66,22 @@ class MenuState extends FlxState
 				onComplete: (_) ->
 				{
 					FlxG.camera.bgColor = FlxColor.BLACK;
-					FlxG.switchState(new Dialogue());
+					FlxG.switchState(new LevelSelect());
+				}
+			});
+		}
+	}
+
+	function onCreditsClick()
+	{
+		FlxG.camera.fade(FlxColor.BLACK, 1);
+		for (o in ttlObj)
+		{
+			FlxTween.tween(o, {alpha: 0}, 1, {
+				onComplete: (_) ->
+				{
+					FlxG.camera.bgColor = FlxColor.BLACK;
+					// FlxG.switchState(new CreditsState());
 				}
 			});
 		}

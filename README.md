@@ -18,9 +18,8 @@ Your goal now is to roll up these cats in fluffy blankets, right before Mrs. Oce
 
 Left arrow or A key: unroll the cat out of the blanket.
 Right arrow or D key: roll the cat up in a blanket.
-Enter: Select an option in the pause menu or proceed in dialogue
-
-M: Toggle music. [TODO]
+Enter: Select an option and proceed in dialogue
+Escape OR Enter: Open the Pause Menu
 
 **Original Made as a submission for [HaxeJam 2021: Winter Edition](https://itch.io/jam/haxejam-2021-winter-edition).**
 

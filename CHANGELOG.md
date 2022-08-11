@@ -1,3 +1,12 @@
+# 0.2.1
+
+- Changed New Dialogue
+- Added the ability to press Escape to go to the Pause Menu
+- Added Pause Menu Option to go to level select
+- Changed how dialogue works (checks the level)
+- Changed how Levels work (they have separate files now)
+- Added Level Select
+- Fixed 0.2.0 changelog
 
 # 0.2.0
 
@@ -11,7 +20,7 @@
 - Added the rest of the instructions in the README
 - Removed bounce when starting the game (sorry but it caused a bug with the pawse menu :()
 - Fixed some more pixels appearing in one of the cats frames
-- Added more Dialogue
+- Added Dialogue
 - Added a **Paw**se menu ;)
 
 # 0.1.0
