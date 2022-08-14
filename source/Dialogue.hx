@@ -26,7 +26,7 @@ class Dialogue extends FlxState
 		FlxG.camera.color = FlxColor.BLACK;
 		FlxG.camera.fade(FlxColor.TRANSPARENT, true);
 
-		text = CoolUtil.getTextFile('assets/data/introDia.txt', ', ');
+		text = QoL.getTextFile('assets/data/introDia.txt', ', ');
 
 		bg = new FlxSprite(0, 0, '');
 		add(bg);
@@ -79,9 +79,28 @@ class Dialogue extends FlxState
 				case 3:
 					createStory("And the cats aren't sleep!", 'assets/images/playstate/story/text.png');
 				case 4:
-					createStory('I hope she is fine with certain cats being\nsleep, cause she has way to many for me \nto even make go to bed!', 'assets/images/playstate/story/messyCats.png');
+					createStory('I hope she is fine with certain cats being\nsleep, cause she has way to many for me \nto even make go to bed!',
+						'assets/images/playstate/story/messyCats.png');
 				case 5:
 					FlxG.switchState(new LevelOne());
+			}
+		}
+
+		if (LevelSelect.level == 2)
+		{
+			switch (curLine)
+			{
+				case 1:
+					createStory('Hello?', 'assets/images/playstate/story/empyTJ.png');
+				case 2:
+					QoL.playSound('assets/sounds/meow');
+					createStory('AAAA', 'assets/images/playstate/story/BOO.png');
+				case 3:
+					createStory('Oh geez, you scared me you lil-cat,\nI guess its just us for the night', 'assets/images/playstate/story/BOO.png');
+				case 4:
+					createStory('Okay so, I heard you like being rolled up \nin your blanket roll, ', 'assets/images/playstate/story/BOO.png');
+				case 5:
+					FlxG.switchState(new LevelTwo());
 			}
 		}
 

@@ -1,8 +1,8 @@
 package;
 
-import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.FlxSubState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -22,6 +22,22 @@ class PauseMenuSubState extends FlxSubState
 	public function new()
 	{
 		super();
+
+		//random from 1 to never gonna give you up views when i saw it
+		var rand:Int = FlxG.random.int(1, 1266111147);
+		
+		if (rand == 1)
+		{
+			textItems.remove('Resume');
+			textItems.remove('Exit to menu');
+			textItems.remove('Exit to Level Select');
+			textItems.push('Never gonna');
+			textItems.push('Give you');
+			textItems.push('Up');
+		}
+
+		if (rand != 1)
+			trace(rand);
 
 		trace('paused');
 
@@ -68,11 +84,8 @@ class PauseMenuSubState extends FlxSubState
 		{
 			switch (textItems[curSelected])
 			{
-				case 'Resume':
-					FlxG.sound.resume();
-					PlayState.paused = false;
-					trace('unpaused');
-					FlxG.state.closeSubState();
+				case 'Open Options Menu':
+					// openSubState(new OptionsSubState());
 
 				case 'Exit to menu':
 					FlxG.camera.fade(FlxColor.BLACK, 1);
@@ -89,6 +102,12 @@ class PauseMenuSubState extends FlxSubState
 					FlxG.camera.color = FlxColor.BLACK;
 					FlxG.switchState(new LevelSelect());
 					PlayState.paused = false;
+
+				default:
+					FlxG.sound.resume();
+					PlayState.paused = false;
+					trace('unpaused');
+					FlxG.state.closeSubState();
 			}
 		}
 	}

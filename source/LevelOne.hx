@@ -43,6 +43,8 @@ class LevelOne extends FlxState
 
 	override public function create()
 	{
+		PlayState.points = 0;
+
 		pText = new FlxText(476, 330, 0, "", 16, true);
 		pText.font = 'assets/data/fonts/statusplz-regular.ttf';
 		pText.antialiasing = false;
@@ -52,12 +54,8 @@ class LevelOne extends FlxState
 		super.create();
 		bg = new FlxSprite(0, 0, 'assets/images/playstate/new stage.png');
 
-		#if html5
-		FlxG.sound.playMusic('assets/music/Bg.mp3', 1, true);
-		#end
-		#if !html5
-		FlxG.sound.playMusic('assets/music/Bg.ogg', 1, true);
-		#end
+		FlxG.sound.destroy();
+		QoL.playMusic('assets/music/roll');
 
 		add(bg);
 		add(rollPoint);
@@ -182,7 +180,7 @@ class LevelOne extends FlxState
 			}
 		 */
 
-		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE && PlayState.canPause == true)
+		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE && PlayState.canPause == true && ModsSubState.originalMod == false)
 		{
 			PlayState.paused = true;
 			FlxG.sound.pause();
