@@ -1,3 +1,8 @@
+# 0.3.1
+- WE ARE ON [NEWGROUNDS]()
+- Put levels in folders (source code)
+- Added mods folder in compiled versions
+
 # **0.3.0**
 
 - ADDED **G**[Thanks IdwdoHuuruHAH](https://cult-of-x.fandom.com/wiki/Fatal_Error?file=FatalError_Fear.png)

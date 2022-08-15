@@ -1,4 +1,4 @@
-package;
+package levels;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -14,7 +14,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import haxe.CallStack;
 
-class LevelOne extends FlxState
+class LevelThree extends FlxState
 {
 	var kitties:Cat;
 
@@ -52,10 +52,10 @@ class LevelOne extends FlxState
 		rollPoint = new FlxSprite(480, 380);
 		rollPoint.makeGraphic(16, 16, FlxColor.TRANSPARENT);
 		super.create();
-		bg = new FlxSprite(0, 0, 'assets/images/playstate/new stage.png');
+		bg = new FlxSprite(0, 0, 'assets/images/playstate/abandom.png');
 
 		FlxG.sound.destroy();
-		QoL.playMusic('assets/music/roll');
+		QoL.playMusic('assets/music/stray');
 
 		add(bg);
 		add(rollPoint);
@@ -70,24 +70,16 @@ class LevelOne extends FlxState
 
 	function spawnCats()
 	{
-		switch (FlxG.random.int(0, 3))
+		switch (FlxG.random.int(0, 1))
 		{
 			case 0:
-				curKit = 'lilly';
+				curKit = 'strayONE';
 				curRoll = 'assets/images/playstate/lillyroll.png';
 				curBlanket = 'assets/images/playstate/lillyblank.png';
 			case 1:
-				curKit = 'logo';
+				curKit = 'strayTWO';
 				curRoll = 'assets/images/playstate/logoroll.png';
 				curBlanket = 'assets/images/playstate/logoblank.png';
-			case 2:
-				curKit = 'luna';
-				curRoll = 'assets/images/playstate/lunaroll.png';
-				curBlanket = 'assets/images/playstate/lunablank.png';
-			case 3:
-				curKit = 'artsi';
-				curRoll = 'assets/images/playstate/artsiroll.png';
-				curBlanket = 'assets/images/playstate/artsiblank.png';
 			case _:
 				trace("default :(");
 		}
@@ -180,7 +172,7 @@ class LevelOne extends FlxState
 			}
 		 */
 
-		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE && PlayState.canPause == true && ModsSubState.originalMod == false)
+		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE && PlayState.canPause == true)
 		{
 			PlayState.paused = true;
 			FlxG.sound.pause();

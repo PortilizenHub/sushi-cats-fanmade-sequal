@@ -82,7 +82,7 @@ class Dialogue extends FlxState
 					createStory('I hope she is fine with certain cats being\nsleep, cause she has way to many for me \nto even make go to bed!',
 						'assets/images/playstate/story/messyCats.png');
 				case 5:
-					FlxG.switchState(new LevelOne());
+					FlxG.switchState(new levels.LevelOne());
 			}
 		}
 
@@ -100,7 +100,7 @@ class Dialogue extends FlxState
 				case 4:
 					createStory('Okay so, I heard you like being rolled up \nin your blanket roll, ', 'assets/images/playstate/story/BOO.png');
 				case 5:
-					FlxG.switchState(new LevelTwo());
+					FlxG.switchState(new levels.LevelTwo());
 			}
 		}
 

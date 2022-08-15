@@ -95,7 +95,7 @@ class LevelSelect extends FlxSubState
 					if (OptionsSubState.publicDialogueVAR == true)
 						FlxG.switchState(new Dialogue());
 					else if (OptionsSubState.publicDialogueVAR == false)
-						FlxG.switchState(new LevelOne());
+						FlxG.switchState(new levels.LevelOne());
 
 				case 'Level 2':
 					level = 2;
@@ -105,21 +105,21 @@ class LevelSelect extends FlxSubState
 					if (OptionsSubState.publicDialogueVAR == true)
 						FlxG.switchState(new Dialogue());
 					else if (OptionsSubState.publicDialogueVAR == false)
-						FlxG.switchState(new LevelTwo());
+						FlxG.switchState(new levels.LevelTwo());
 
 				case 'Level 3':
 					level = 3;
 					FlxG.camera.fade(FlxColor.BLACK, 1);
 					FlxG.state.closeSubState();
 					FlxG.camera.color = FlxColor.BLACK;
-					FlxG.switchState(new LevelThree());
+					FlxG.switchState(new levels.LevelThree());
 
 				case 'Level 4':
 					level = 4;
 					FlxG.camera.fade(FlxColor.BLACK, 1);
 					FlxG.state.closeSubState();
 					FlxG.camera.color = FlxColor.BLACK;
-					FlxG.switchState(new LevelThree());
+					FlxG.switchState(new levels.LevelThree());
 
 				case 'Exit to Main Menu':
 					trace('go to da menu');

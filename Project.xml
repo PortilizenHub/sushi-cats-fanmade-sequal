@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://lime.software/project/1.0.2 http://lime.software/xsd/project-1.0.2.xsd">
 
 	<!-- _________________________ Application Settings _________________________ -->
-	<app title="sushi cats 2" file="sushi" main="Main" version="0.3.0" company="Portilizen" />
+	<app title="sushi cats 2" file="sushi" main="Main" version="0.3.1" company="Portilizen" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -31,6 +31,8 @@
 	<set name="BUILD_DIR" value="export" />
 
 	<assets path="CHANGELOG.md" rename='changelog.txt'/>
+
+	<assets path="mods" rename="Mods" />
 
 	<source path="source" />
 	<assets path="assets" />
