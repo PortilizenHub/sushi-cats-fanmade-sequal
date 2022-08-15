@@ -1,5 +1,15 @@
+# 0.3.2
+
+- Added Level 3 story
+- Replaced haxe flixel logo for compiled applications
+- Added art folder (source code)
+- Added version display (main menu)
+- Removed "G" (this was not added by me)
+- Fixed 0.3.1 changelog (github)
+
 # 0.3.1
-- WE ARE ON [NEWGROUNDS]()
+
+- WE ARE ON [NEWGROUNDS](https://www.newgrounds.com/portal/view/853774)
 - Put levels in folders (source code)
 - Added mods folder in compiled versions
 

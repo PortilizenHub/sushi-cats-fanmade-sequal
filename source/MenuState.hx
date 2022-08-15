@@ -18,10 +18,9 @@ import openfl.text.TextFormat;
 
 class MenuState extends FlxState
 {
-	var locked:Bool = false;
-
 	var titleText:FlxText;
 	var datxt:FlxText;
+	var vertxt:FlxText;
 
 	var bd:FlxBackdrop;
 
@@ -32,7 +31,6 @@ class MenuState extends FlxState
 	var optionsButton:FlxUIButton;
 
 	var easterEgg:FlxSprite;
-	var fatal:FlxSprite;
 
 	var arr:Array<String>;
 
@@ -62,11 +60,6 @@ class MenuState extends FlxState
 		titleText = new FlxText(154, 90, 0, "Sushi Cats 2!", 48, true);
 		titleText.font = 'assets/data/fonts/lowbatt.ttf';
 
-		fatal = new FlxSprite(154, 90,
-			'assets/images/fatal.png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png..png.png.png.png.png');
-		fatal.alpha = 0;
-		add(fatal);
-
 		if (ModsSubState.originalMod == false)
 		{
 			modsButton = new FlxUIButton(206, 290, "Mods!", onModsClick);
@@ -78,13 +71,15 @@ class MenuState extends FlxState
 			modsButton = new FlxUIButton(256, 290, "Mods!", onModsClick);
 			playButton = new FlxUIButton(256, 260, "Play!", onOGPlayClick);
 		}
-
 		datxt = new FlxText(148, 320, 0, "Made with love to the Haxe Community\noriginal by Renchu (@BSOD).\nsequel by Portilizen", 14);
 		datxt.alignment = CENTER;
 		datxt.color = FlxColor.fromString("383259");
 		datxt.autoSize = false;
 
-		ttlObj = [bd, titleText, modsButton, playButton, optionsButton, datxt];
+		vertxt = new FlxText(2, 460, 0, PlayState.version, 14);
+		vertxt.color = FlxColor.fromString("383259");
+
+		ttlObj = [bd, vertxt, titleText, modsButton, playButton, optionsButton, datxt];
 
 		for (o in ttlObj)
 			add(o);
@@ -108,53 +103,24 @@ class MenuState extends FlxState
 
 	function onOGPlayClick()
 	{
-		if (locked == false)
-		{
 			FlxG.camera.bgColor = FlxColor.BLACK;
 			LevelSelect.level = 1;
 			FlxG.switchState(new Dialogue());
-		}
-		else if (locked == true)
-		{
-			FlxG.camera.fade(FlxColor.BLACK, 1);
-			for (o in ttlObj)
-			{
-				FlxTween.tween(o, {alpha: 0}, 1, {
-					onComplete: (_) ->
-					{
-						FlxG.camera.bgColor = FlxColor.BLACK;
-						FlxG.switchState(new LevelSelect());
-					}
-				});
-			}
-		}
 
 	}
 
 	function onOptionsClick()
 	{
-		if (locked == false)
-			openSubState(new OptionsSubState());
+		openSubState(new OptionsSubState());
 	}
 
 	function onModsClick()
 	{
-		if (locked == false)
-			openSubState(new ModsSubState());
+		openSubState(new ModsSubState());
 	}
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.justReleased.G)
-		{
-			bd.alpha = 0;
-			fatal.alpha = 10;
-			locked = true;
-			for (o in ttlObj)
-				o.alpha = 0;
-			playButton.alpha = 10;
-		}
-
 		super.update(elapsed);
 	}
 }

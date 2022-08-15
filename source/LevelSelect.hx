@@ -112,14 +112,20 @@ class LevelSelect extends FlxSubState
 					FlxG.camera.fade(FlxColor.BLACK, 1);
 					FlxG.state.closeSubState();
 					FlxG.camera.color = FlxColor.BLACK;
-					FlxG.switchState(new levels.LevelThree());
+					if (OptionsSubState.publicDialogueVAR == true)
+						FlxG.switchState(new Dialogue());
+					else if (OptionsSubState.publicDialogueVAR == false)
+						FlxG.switchState(new levels.LevelThree());
 
 				case 'Level 4':
 					level = 4;
 					FlxG.camera.fade(FlxColor.BLACK, 1);
 					FlxG.state.closeSubState();
 					FlxG.camera.color = FlxColor.BLACK;
-					FlxG.switchState(new levels.LevelThree());
+					if (OptionsSubState.publicDialogueVAR == true)
+						FlxG.switchState(new Dialogue());
+					else if (OptionsSubState.publicDialogueVAR == false)
+						FlxG.switchState(new levels.LevelThree());
 
 				case 'Exit to Main Menu':
 					trace('go to da menu');

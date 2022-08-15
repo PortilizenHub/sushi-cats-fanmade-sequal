@@ -104,5 +104,23 @@ class Dialogue extends FlxState
 			}
 		}
 
+		if (LevelSelect.level == 3)
+		{
+			switch (curLine)
+			{
+				case 1:
+					createStory('Hello?', 'assets/images/playstate/story/alone.png');
+				
+				case 2:
+					createStory('Oh, hey there little cats', 'assets/images/playstate/story/alone.png');
+
+				case 3:
+					createStory("Don't worry, I will take care\nof you", 'assets/images/playstate/story/alone.png');
+
+				case 4:
+					FlxG.switchState(new levels.LevelThree());
+			}
+		}
+
 	}
 }
